@@ -1,30 +1,29 @@
-//  /app/login/page.tsx
-
+// /app/login/page.tsx
 'use client'
-import { Authenticator, View, useAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useRouter } from 'next/navigation'; // Updated import
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Amplify } from 'aws-amplify';
 import amplifyConfig from '../utils/aws/config';
 
+// Configure Amplify outside of the component but after the import
+Amplify.configure(amplifyConfig);
+
 const Login = () => {
     const router = useRouter();
-    const currentConfig = Amplify.getConfig();
-    const configString = JSON.stringify(currentConfig, null, 2);
-    console.log(currentConfig);
-    console.log("loading the login page");
-    Amplify.configure(amplifyConfig)
-      
 
     return (
         <Authenticator>
-            {({ signOut, user }) => {  // Using render props to access context
+            {({ signOut, user }) => {
+                // Redirect if the user is authenticated
                 useEffect(() => {
-                    if (user) {  // Only navigate if on the client and user is authenticated
+                    if (user) {
+                        console.log("User is authenticated, redirecting to dashboard...");
                         router.push('/dashboard');
                     }
-                }, [router, user]);
+                    console.log("User is not authenticated");
+                }, [user]);
 
                 return (
                     <div>
@@ -32,13 +31,11 @@ const Login = () => {
                         {user && (
                             <button onClick={signOut}>Sign Out</button>
                         )}
-                        <pre>{configString}</pre>  
                     </div>
                 );
             }}
         </Authenticator>
     );
 };
-
 
 export default Login;

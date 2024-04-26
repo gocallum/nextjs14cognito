@@ -1,5 +1,6 @@
 import { Navbar } from "./components/navbar";
 import {Footer} from "./components/footer";
+import Link from "next/link";
 
 //this is a home page using Next JS 14 and Tailwind CSS 2.2
 // on this homepage, I want to have a nav bar (tailwind css compoent) section which has an app name called Callum's AWS Cognito App
@@ -11,14 +12,15 @@ import {Footer} from "./components/footer";
 // and footer which has the text "© 20214 Callum Bir. All rights reserved." 
 
 
-import { Amplify } from 'aws-amplify';
-
+/* import { Authenticator } from "@aws-amplify/ui-react";
+import type { AppProps } from "next/app";
+ */
 //AWS_COGNITO_REGION='us-east-1'
 //AWS_COGNITO_POOL_ID='us-east-1_0IZsUv8HN'
 //AWS_COGNITO_APP_CLIENT_ID='358bfgi6ffmblbitgs6a0ooi1m'
 
 
-Amplify.configure({
+/* Amplify.configure({
   Auth: {
     Cognito: {
       userPoolClientId: '358bfgi6ffmblbitgs6a0ooi1m',
@@ -27,7 +29,7 @@ Amplify.configure({
     }
   }
 );
-
+ */
 
 export default function Home() {
   return (
@@ -40,6 +42,12 @@ export default function Home() {
           Users can sign up and sign in to access your application, and you can manage permissions using policies.
           Here's how you can integrate AWS Cognito with a custom sign-up and sign-in page using Next.js and Tailwind CSS.
         </p>
+        <h2 className="text-lg font-bold">Click on Secure Page Below</h2>
+        <p>
+          These links below are secure pages that require authentication to access.
+        </p>
+        <Link href="/dashboard"> Click here to see secure link</Link>
+
       </main>
       <Footer />
     </div>

@@ -40,7 +40,7 @@ export default function Home() {
         <p>
           AWS Cognito provides authentication, authorization, and user management for your web and mobile apps.
           Users can sign up and sign in to access your application, and you can manage permissions using policies.
-          Here's how you can integrate AWS Cognito with a custom sign-up and sign-in page using Next.js and Tailwind CSS.
+          Here how you can integrate AWS Cognito with a custom sign-up and sign-in page using Next.js and Tailwind CSS.
         </p>
         <h2 className="text-lg font-bold">Click on Secure Page Below</h2>
         <p>

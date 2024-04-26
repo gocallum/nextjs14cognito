@@ -1,5 +1,4 @@
 // /app/utils/withAuth.tsx
-'use client'
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, ReactNode } from 'react';

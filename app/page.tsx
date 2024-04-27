@@ -20,7 +20,7 @@ export default function Home() {
         <p>
           These links below are secure pages that require authentication to access.
         </p>
-        <Link href="/dashboard"> Click here to see secure link</Link>
+        <Link href="/dashboard" className="text-blue-600 underline hover:text-blue-800"> Click here to see secure link</Link>
 
       </main>
       <Footer />

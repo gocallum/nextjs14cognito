@@ -1,6 +1,12 @@
+
+
 // components/Navbar.tsx
+
+'use client'
 import Link from 'next/link';
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator, View } from '@aws-amplify/ui-react';
+import WelcomeName from './WelcomeName';
+import NavLinks from './NavLinks';
 
 
 interface NavItemProps {
@@ -14,23 +20,27 @@ const NavItem: React.FC<NavItemProps> = ({ href, label }) => (
   </Link>
 );
 
-// I want the signout link to come from amplify signOut function
+/** in the navbar, I want to create a component which will use the useAuthenticator 
+ * and get the state 
+ * 
+ * if the user is signed in, I want to show the sign out Amplify 
+ * if the user is not signed in, I want to show the sign in and sign up menu links which point  
+ * 
+*/
+
 
 export const Navbar = () => {
   return (
+    <Authenticator.Provider>
     <nav className="bg-blue-500 py-4">
       <div className="container mx-auto flex justify-between">
         <div>
           <h1 className="text-xl text-white">Callum AWS Cognito App</h1>
-          <p className="text-sm text-white">Welcome to my AWS Cognito App</p>
+          <WelcomeName />
         </div>
-        <div>
-          <NavItem href="/signup" label="Sign Up" />
-          <NavItem href="/login" label="Sign In" />
-          <NavItem href='/signOut' label="Sign Out" />          
-
-        </div>
+        <NavLinks />
       </div>
     </nav>
+    </Authenticator.Provider>
   );
 };

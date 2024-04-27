@@ -14,9 +14,11 @@ Amplify.configure(amplifyConfig);
 
 const Login = () => {
     const router = useRouter();
+    console.log("loading the login page");
 
     return (
         <Authenticator>
+            <h1>Login Page</h1>
             <LoginComponent/>
         </Authenticator>
     );
